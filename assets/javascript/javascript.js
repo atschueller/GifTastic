@@ -17,8 +17,8 @@ function makeButtons() {
 //Create buttons out of user input in the search form//
 $('#gifInput').on('click', function (event) {
     event.preventDefault();
-    searchInput = $('#gifInput').val().trim();
-    var gifSearch = queryURLBase + searchInput;
+    searchInput = $('#gifSearch').val().trim();
+    var gifSearch = searchInput;
     topics.push(gifSearch);
     makeButtons(gifSearch);
 });
