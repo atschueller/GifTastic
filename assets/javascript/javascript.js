@@ -40,8 +40,8 @@ $('#gifButtons').on('click', function () {
         console.log(queryUrl);
         console.log(response);
         var stuffiLike = response.data;
-        for (i = 0; i < stuffiLike.length; i++) {
-            if (stuffiLike[i].rating === "pg" && stuffiLike[i].rating === "g") {
+        for (var i = 0; i < stuffiLike.length; i++) {
+            if (stuffiLike[i].rating === "pg" || stuffiLike[i].rating === "g") {
                 var gifDiv = $("<div class='item'>");
                 var rating = stuffiLike[i].rating;
                 var gifP = $('<p>').text('Rating:' + rating);
