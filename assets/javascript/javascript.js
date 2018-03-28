@@ -1,7 +1,6 @@
 var topics = ['horses', 'beagles', 'rock music', 'shopping'];
 var searchInput = '';
 var queryURLBase = "https://api.giphy.com/v1/gifs/search?api_key=4fsb7d1ohaJA2VY1PVRh8MBdqYD7TAh1&q=&limit=10&offset=0&rating=PG&lang=en"
-var gifDiv = $("<div>");
 var gifImage;
 makeButtons();
 //Make a function that creates buttons out of the array//
@@ -40,6 +39,7 @@ $('.gifButtons').on('click', function () {
         var stuffiLike = response.data;
         for (var i = 0; i < stuffiLike.length; i++) {
             if (stuffiLike[i].rating === "pg" || stuffiLike[i].rating === "g") {
+                var gifDiv = $("<div>");
                 var rating = stuffiLike[i].rating;
                 var gifP = $('<p>').text('Rating:' + rating);
                 var image = stuffiLike[i].images;
@@ -48,12 +48,9 @@ $('.gifButtons').on('click', function () {
                 gifImage.attr('data-still', stuffiLike[i].images.fixed_height_small_still.url);
                 gifImage.attr('data-animate', stuffiLike[i].images.fixed_height_small.url);
                 gifImage.attr('data-state', stuffiLike[i].images.fixed_height_small_still.url);
-
                 gifDiv.addClass('giphy');
                 gifDiv.append(gifP);
                 gifDiv.append(gifImage);
-                
-
                 $('#gifBody').prepend(gifDiv);
             };
         };
