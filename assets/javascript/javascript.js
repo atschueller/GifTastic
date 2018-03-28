@@ -47,7 +47,8 @@ $('.gifButtons').on('click', function () {
                 gifImage.attr("src", stuffiLike[i].images.fixed_height_small_still.url);
                 gifImage.attr('data-still', stuffiLike[i].images.fixed_height_small_still.url);
                 gifImage.attr('data-animate', stuffiLike[i].images.fixed_height_small.url);
-                gifImage.attr('paused', stuffiLike[i].images.fixed_height_small_still.url)
+                gifImage.attr('data-state', stuffiLike[i].images.fixed_height_small_still.url);
+
                 gifDiv.addClass('giphy');
                 gifDiv.append(gifP);
                 gifDiv.append(gifImage);
@@ -59,14 +60,12 @@ $('.gifButtons').on('click', function () {
     });
 });
 //Create an on click function to make Giphys animate or become still//
-$(document).on('click', '.giphy', function (event) {
+$('.giphy').on('click', function (event) {
     var gifState = $(this).attr('data-state');
-    if (gifState === 'paused') {
-        var animateGiphy = $(this).attr("data-animate");
+    if (gifState === 'still') {
         $(this).attr('src', $(this).attr('data-animate'));
-        $(this).attr('data-state', 'animate');
+        $(this).attr('data-state', 'data-animate');
     } else {
-        var stillGiphy = $(this).attr("data-still");
         $(this).attr('src', $(this).attr('data-still'));
         $(this).attr('data-state', 'data-still');
     };
